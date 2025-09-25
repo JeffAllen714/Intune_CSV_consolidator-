@@ -7,7 +7,7 @@ Add-Type -AssemblyName System.Drawing
 # Create main form
 $form = New-Object System.Windows.Forms.Form
 $form.Text = "Intune Hardware Hash CSV Consolidator"
-$form.Size = New-Object System.Drawing.Size(650, 550)
+$form.Size = New-Object System.Drawing.Size(700, 580)
 $form.StartPosition = "CenterScreen"
 $form.FormBorderStyle = "FixedDialog"
 $form.MaximizeBox = $false
@@ -24,7 +24,7 @@ $form.Controls.Add($companyLabel)
 
 $companyTextBox = New-Object System.Windows.Forms.TextBox
 $companyTextBox.Location = New-Object System.Drawing.Point(20, 45)
-$companyTextBox.Size = New-Object System.Drawing.Size(300, 25)
+$companyTextBox.Size = New-Object System.Drawing.Size(350, 25)
 $companyTextBox.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
 $companyTextBox.ForeColor = [System.Drawing.Color]::White
 $companyTextBox.BorderStyle = "FixedSingle"
@@ -33,22 +33,22 @@ $form.Controls.Add($companyTextBox)
 # Source Directory Section
 $sourceLabel = New-Object System.Windows.Forms.Label
 $sourceLabel.Location = New-Object System.Drawing.Point(20, 85)
-$sourceLabel.Size = New-Object System.Drawing.Size(200, 20)
+$sourceLabel.Size = New-Object System.Drawing.Size(250, 20)
 $sourceLabel.Text = "Source Directory (CSV Files):"
 $sourceLabel.ForeColor = [System.Drawing.Color]::White
 $form.Controls.Add($sourceLabel)
 
 $sourceTextBox = New-Object System.Windows.Forms.TextBox
 $sourceTextBox.Location = New-Object System.Drawing.Point(20, 110)
-$sourceTextBox.Size = New-Object System.Drawing.Size(450, 25)
+$sourceTextBox.Size = New-Object System.Drawing.Size(500, 25)
 $sourceTextBox.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
 $sourceTextBox.ForeColor = [System.Drawing.Color]::White
 $sourceTextBox.BorderStyle = "FixedSingle"
 $form.Controls.Add($sourceTextBox)
 
 $sourceBrowseButton = New-Object System.Windows.Forms.Button
-$sourceBrowseButton.Location = New-Object System.Drawing.Point(480, 108)
-$sourceBrowseButton.Size = New-Object System.Drawing.Size(80, 28)
+$sourceBrowseButton.Location = New-Object System.Drawing.Point(530, 108)
+$sourceBrowseButton.Size = New-Object System.Drawing.Size(90, 28)
 $sourceBrowseButton.Text = "Browse..."
 $sourceBrowseButton.BackColor = [System.Drawing.Color]::FromArgb(70, 70, 70)
 $sourceBrowseButton.ForeColor = [System.Drawing.Color]::White
@@ -73,15 +73,15 @@ $form.Controls.Add($outputLabel)
 
 $outputTextBox = New-Object System.Windows.Forms.TextBox
 $outputTextBox.Location = New-Object System.Drawing.Point(20, 200)
-$outputTextBox.Size = New-Object System.Drawing.Size(450, 25)
+$outputTextBox.Size = New-Object System.Drawing.Size(500, 25)
 $outputTextBox.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
 $outputTextBox.ForeColor = [System.Drawing.Color]::White
 $outputTextBox.BorderStyle = "FixedSingle"
 $form.Controls.Add($outputTextBox)
 
 $outputBrowseButton = New-Object System.Windows.Forms.Button
-$outputBrowseButton.Location = New-Object System.Drawing.Point(480, 198)
-$outputBrowseButton.Size = New-Object System.Drawing.Size(80, 28)
+$outputBrowseButton.Location = New-Object System.Drawing.Point(530, 198)
+$outputBrowseButton.Size = New-Object System.Drawing.Size(90, 28)
 $outputBrowseButton.Text = "Browse..."
 $outputBrowseButton.BackColor = [System.Drawing.Color]::FromArgb(70, 70, 70)
 $outputBrowseButton.ForeColor = [System.Drawing.Color]::White
@@ -98,7 +98,7 @@ $form.Controls.Add($previewLabel)
 
 $previewListBox = New-Object System.Windows.Forms.ListBox
 $previewListBox.Location = New-Object System.Drawing.Point(20, 265)
-$previewListBox.Size = New-Object System.Drawing.Size(540, 120)
+$previewListBox.Size = New-Object System.Drawing.Size(560, 120)
 $previewListBox.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
 $previewListBox.ForeColor = [System.Drawing.Color]::White
 $previewListBox.BorderStyle = "FixedSingle"
@@ -106,8 +106,8 @@ $form.Controls.Add($previewListBox)
 
 # Refresh Files Button
 $refreshButton = New-Object System.Windows.Forms.Button
-$refreshButton.Location = New-Object System.Drawing.Point(570, 265)
-$refreshButton.Size = New-Object System.Drawing.Size(60, 30)
+$refreshButton.Location = New-Object System.Drawing.Point(590, 265)
+$refreshButton.Size = New-Object System.Drawing.Size(70, 30)
 $refreshButton.Text = "Refresh"
 $refreshButton.BackColor = [System.Drawing.Color]::FromArgb(70, 70, 70)
 $refreshButton.ForeColor = [System.Drawing.Color]::White
@@ -116,24 +116,24 @@ $form.Controls.Add($refreshButton)
 
 # Progress Bar
 $progressBar = New-Object System.Windows.Forms.ProgressBar
-$progressBar.Location = New-Object System.Drawing.Point(20, 395)
-$progressBar.Size = New-Object System.Drawing.Size(440, 20)
+$progressBar.Location = New-Object System.Drawing.Point(20, 400)
+$progressBar.Size = New-Object System.Drawing.Size(480, 20)
 $progressBar.Style = "Continuous"
 $progressBar.Visible = $false
 $form.Controls.Add($progressBar)
 
 # Status Label
 $statusLabel = New-Object System.Windows.Forms.Label
-$statusLabel.Location = New-Object System.Drawing.Point(20, 425)
-$statusLabel.Size = New-Object System.Drawing.Size(500, 40)
+$statusLabel.Location = New-Object System.Drawing.Point(20, 430)
+$statusLabel.Size = New-Object System.Drawing.Size(600, 40)
 $statusLabel.Text = "Ready to consolidate CSV files..."
 $statusLabel.ForeColor = [System.Drawing.Color]::LightGray
 $form.Controls.Add($statusLabel)
 
 # Process Button
 $processButton = New-Object System.Windows.Forms.Button
-$processButton.Location = New-Object System.Drawing.Point(480, 395)
-$processButton.Size = New-Object System.Drawing.Size(100, 35)
+$processButton.Location = New-Object System.Drawing.Point(520, 395)
+$processButton.Size = New-Object System.Drawing.Size(110, 35)
 $processButton.Text = "Process Files"
 $processButton.BackColor = [System.Drawing.Color]::FromArgb(0, 120, 215)
 $processButton.ForeColor = [System.Drawing.Color]::White
@@ -143,8 +143,8 @@ $form.Controls.Add($processButton)
 
 # Open Output Button
 $openOutputButton = New-Object System.Windows.Forms.Button
-$openOutputButton.Location = New-Object System.Drawing.Point(480, 440)
-$openOutputButton.Size = New-Object System.Drawing.Size(100, 30)
+$openOutputButton.Location = New-Object System.Drawing.Point(520, 440)
+$openOutputButton.Size = New-Object System.Drawing.Size(110, 30)
 $openOutputButton.Text = "Open Output"
 $openOutputButton.BackColor = [System.Drawing.Color]::FromArgb(70, 70, 70)
 $openOutputButton.ForeColor = [System.Drawing.Color]::White
